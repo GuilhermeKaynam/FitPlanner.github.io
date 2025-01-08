@@ -4,7 +4,7 @@ import { Plus, Trash2 } from 'lucide-react';
 
 interface WorkoutFormProps {
   studentId: string;
-  onSubmit: (name: string, exercises: Exercise[], studentId: string) => void; // Atualizado para incluir studentId
+  onSubmit: (name: string, exercises: Exercise[]) => void;
 }
 
 export const WorkoutForm: React.FC<WorkoutFormProps> = ({ studentId, onSubmit }) => {
@@ -34,9 +34,7 @@ export const WorkoutForm: React.FC<WorkoutFormProps> = ({ studentId, onSubmit })
       ...ex,
       id: Math.random().toString(36).substr(2, 9),
     }));
-
-    // Passando studentId para a função onSubmit
-    onSubmit(workoutName, exercisesWithIds, studentId);
+    onSubmit(workoutName, exercisesWithIds);
     setWorkoutName('');
     setExercises([]);
   };

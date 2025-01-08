@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Workout } from '../types'; // Removi a importação do 'Exercise' já que não é usada
+import { Workout, Exercise } from '../types';
 
 interface WorkoutState {
   workouts: Workout[];

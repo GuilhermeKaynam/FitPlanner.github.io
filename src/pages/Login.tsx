@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Dumbbell } from 'lucide-react';
-import { useAuthStore } from '../store/useAuthStore';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { Dumbbell } from "lucide-react";
+import { useAuthStore } from "../store/useAuthStore";
 
 export const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
 
@@ -13,9 +13,9 @@ export const Login: React.FC = () => {
     e.preventDefault();
     const success = login(email, password);
     if (success) {
-      navigate('/dashboard');
+      navigate("/dashboard");
     } else {
-      alert('Email ou senha inválidos!');
+      alert("Email ou senha inválidos!");
     }
   };
 
@@ -54,7 +54,7 @@ export const Login: React.FC = () => {
             Entrar
           </button>
           <p className="text-center text-gray-600 mt-4">
-            Não tem uma conta?{' '}
+            Não tem uma conta?{" "}
             <Link to="/register" className="text-[#f5c518] hover:underline">
               Cadastre-se
             </Link>

@@ -4,13 +4,12 @@ import { useWorkoutStore } from '../store/useWorkoutStore';
 import { WorkoutForm } from '../components/WorkoutForm';
 import { WorkoutList } from '../components/WorkoutList';
 import { Users } from 'lucide-react';
-import { Exercise } from '../types';  // Importe o tipo Exercise, se necessário
 
 export const Workouts: React.FC = () => {
   const user = useAuthStore((state) => state.user);
   const users = useAuthStore((state) => state.users);
   const { addWorkout, getWorkoutsByStudent, getWorkoutsByTrainer } = useWorkoutStore();
-  const [selectedStudent, setSelectedStudent] = useState<string>('');
+  const [selectedStudent, setSelectedStudent] = useState('');
 
   if (!user) return null;
 
@@ -23,9 +22,9 @@ export const Workouts: React.FC = () => {
       : getWorkoutsByTrainer(user.id)
     : getWorkoutsByStudent(user.id);
 
-  const handleWorkoutSubmit = (name: string, exercises: Exercise[]) => {  // Alterei o tipo de 'any' para 'Exercise[]'
+  const handleWorkoutSubmit = (name: string, exercises: any[]) => {
     if (!selectedStudent) return;
-
+    
     addWorkout({
       name,
       exercises,
@@ -33,7 +32,7 @@ export const Workouts: React.FC = () => {
       trainerId: user.id,
       date: new Date().toISOString(),
     });
-
+    
     alert('Treino cadastrado com sucesso!');
   };
 
